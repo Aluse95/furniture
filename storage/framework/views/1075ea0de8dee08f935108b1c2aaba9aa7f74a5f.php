@@ -35,7 +35,7 @@
         
         <!-- Footer Col 5 -->
         <div class="col-lg-4">
-          <div class="widget subscribe-widget clearfix" data-loader="button">
+          <div class="widget clearfix" data-loader="button">
             <h4>Đăng kí</h4>
             <h5 class="font-body op-04">
               <strong>Đăng kí</strong> ngay để nhận thông tin mới nhất!

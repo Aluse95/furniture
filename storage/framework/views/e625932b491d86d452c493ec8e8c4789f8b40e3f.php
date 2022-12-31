@@ -101,13 +101,6 @@
                     <a href="#" data-filter="*">Clear</a>
                   </li>
                   <li><a href="#" data-filter=".sf-dress">Dress</a></li>
-                  <li><a href="#" data-filter=".sf-tshirts">Tshirts</a></li>
-                  <li><a href="#" data-filter=".sf-pants">Pants</a></li>
-                  <li>
-                    <a href="#" data-filter=".sf-sunglasses">Sunglasses</a>
-                  </li>
-                  <li><a href="#" data-filter=".sf-shoes">Shoes</a></li>
-                  <li><a href="#" data-filter=".sf-watches">Watches</a></li>
                 </ul>
               </div>
 

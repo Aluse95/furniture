@@ -24,7 +24,7 @@
       ============================================= -->
         <div class="top-cart-item">
           <div class="top-cart-item-image border-0">
-            <a href="#"><img src="demos/furniture/images/cart/1.jpg" alt="Cart Image 1"/></a>
+            <a href="#"><img src="{{ $image ?? '' }}" alt="Cart Image 1"/></a>
           </div>
           <div class="top-cart-item-desc">
             <div class="top-cart-item-desc-title">
@@ -45,7 +45,7 @@
       ============================================= -->
         <div class="top-cart-item">
           <div class="top-cart-item-image border-0">
-            <a href="#"><img src="demos/furniture/images/cart/2.jpg" alt="Cart Image 2"/></a>
+            <a href="#"><img src="{{ $image ?? '' }}" alt="Cart Image 2"/></a>
           </div>
           <div class="top-cart-item-desc">
             <div class="top-cart-item-desc-title">

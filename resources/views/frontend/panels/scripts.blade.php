@@ -1,11 +1,11 @@
 
  <div id="gotoTop" class="icon-angle-up"></div>
 
- <script src="{{ asset('themes/frontend/thaiever/js/jquery.js') }}"></script>
- <script src="{{ asset('themes/frontend/thaiever/js/plugins.min.js') }}"></script>
+ <script src="{{ asset('themes/frontend/furniture/js/jquery.js') }}"></script>
+ <script src="{{ asset('themes/frontend/furniture/js/plugins.min.js') }}"></script>
 
 
- <script src="{{ asset('themes/frontend/thaiever/js/functions.js') }}"></script>
+ <script src="{{ asset('themes/frontend/furniture/js/functions.js') }}"></script>
 
  <script>
    $(function() {

@@ -32,12 +32,12 @@ $image_background = $taxonomy->json_params->image_background ?? ($web_informatio
               </tr>
             </thead>
             <tbody>
-              @php $total = 0 @endphp
+              @php $total = 0;@endphp
               @foreach (session('cart') as $id => $details)
                 @php
                   $total += $details['price'] * $details['quantity'];
                   $alias_detail = Str::slug($details['title']);
-                  $url_link = route('frontend.cms.product', ['alias_category' => 'chi-tiet', 'alias_detail' => $alias_detail]) . '.html?id=' . $id;
+                  $url_link = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $alias_detail, $id, 'detail', $details->taxonomy_title ?? '');
                 @endphp
                 <tr class="cart_item" data-id="{{ $id }}">
                   <td class="cart-product-remove">

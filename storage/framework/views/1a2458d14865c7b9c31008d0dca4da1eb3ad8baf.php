@@ -2,6 +2,7 @@
 
 <?php
 
+  $id = $detail->id;
   $title = $detail->json_params->title->{$locale} ?? $detail->title;
   $brief = $detail->json_params->brief->{$locale} ?? null;
   $price = $detail->json_params->price ?? null;
@@ -67,18 +68,14 @@
 
                 <!-- Product Single - Quantity & Cart Button
               ============================================= -->
-                <form class="cart mb-0 d-flex justify-content-between align-items-center" method="post"
-                  enctype="multipart/form-data">
+                <form class="cart mb-0 d-flex justify-content-between align-items-center" enctype="multipart/form-data">
                   <div class="quantity clearfix">
                     <input type="button" value="-" class="minus" />
                     <input type="number" step="1" min="1" name="quantity" value="1" title="Qty" class="qty"/>
                     <input type="button" value="+" class="plus" />
-                    <div class="d-none">
-                      <input type="text" name="data-id" value="<?php echo e($title); ?>">
-                    </div>
                   </div>
-                  <button type="submit" class="add-to-cart button m-0">
-                    <?php echo app('translator')->get('Add to cart'); ?>
+                  <button type="submit" class="add-to-cart button m-0" data-id="<?php echo e($id); ?>">
+                    Add to cart
                   </button>
                 </form>
                 <!-- Product Single - Quantity & Cart Button End -->
