@@ -90,27 +90,27 @@
        let _id = _root.attr("data-id");
        let _quantity = _root.attr("data-quantity") ?? $("#quantity").val();
        if (_id > 0) {
-         _root.html("@lang('Processing...')");
-         var url = "{{ route('frontend.order.add_to_cart') }}";
-         $.ajax({
-           type: "POST",
-           url: url,
-           data: {
-             "_token": "{{ csrf_token() }}",
-             "id": _id,
-             "quantity": _quantity
-           },
-           success: function(data) {
-             _root.html(_html);
-             window.location.reload();
-           },
-           error: function(data) {
-             // Get errors
-             var errors = data.responseJSON.message;
-             alert(errors);
-             location.reload();
-           }
-         });
+          _root.html("@lang('Processing...')");
+          var url = "{{ route('frontend.order.add_to_cart') }}";
+          $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+              "_token": "{{ csrf_token() }}",
+              "id": _id,
+              "quantity": _quantity
+            },
+            success: function(data) {
+              _root.html(_html);
+              window.location.reload();
+            },
+            error: function(data) {
+              // Get errors
+              var errors = data.responseJSON.message;
+              alert(errors);
+              location.reload();
+            }
+          });
        }
      });
 

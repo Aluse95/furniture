@@ -59,7 +59,7 @@
                   <!-- Product Single - Price
                 ============================================= -->
                   <div class="product-price">
-                    <del><?php echo e($price_old ? $price_old.'đ' : ''); ?></del> <ins><?php echo e(number_format($price, 0,',','.')); ?>đ</ins>
+                    <del><?php echo e($price_old.'đ' ?? ''); ?></del> <ins><?php echo e(number_format($price, 0,',','.')); ?>đ</ins>
                   </div>
                   <!-- Product Single - Price End -->
                 </div>
@@ -71,10 +71,10 @@
                 <form class="cart mb-0 d-flex justify-content-between align-items-center" enctype="multipart/form-data">
                   <div class="quantity clearfix">
                     <input type="button" value="-" class="minus" />
-                    <input type="number" step="1" min="1" name="quantity" value="1" title="Qty" class="qty"/>
+                    <input type="number" step="1" min="1" name="quantity" value="1" title="Qty" class="qty" id="quantity"/>
                     <input type="button" value="+" class="plus" />
                   </div>
-                  <button type="submit" class="add-to-cart button m-0" data-id="<?php echo e($id); ?>">
+                  <button type="button" class="add-to-cart button m-0" data-id="<?php echo e($id); ?>">
                     Add to cart
                   </button>
                 </form>

@@ -37,7 +37,7 @@ $image_background = $taxonomy->json_params->image_background ?? ($web_informatio
                 @php
                   $total += $details['price'] * $details['quantity'];
                   $alias_detail = Str::slug($details['title']);
-                  $url_link = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $alias_detail, $id, 'detail', $details->taxonomy_title ?? '');
+                  $url_link = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $alias_detail, $id, 'detail', 'san-pham');
                 @endphp
                 <tr class="cart_item" data-id="{{ $id }}">
                   <td class="cart-product-remove">
