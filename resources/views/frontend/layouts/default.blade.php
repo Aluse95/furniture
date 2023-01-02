@@ -38,33 +38,131 @@
 
 <body class="stretched">
 
-  @include('frontend.blocks.header.styles.default')
+  {{--Cart Panel Background--}}
+  <div class="body-overlay"></div>
 
-  {{-- Foreach and print block content by current page --}}
-  @if (isset($blocks_selected))
-    @foreach ($blocks_selected as $block)
-      @if (\View::exists('frontend.blocks.' . $block->block_code . '.index'))
-        @include('frontend.blocks.' . $block->block_code . '.index')
-      @else
-        {{ 'View: frontend.blocks.' . $block->block_code . '.index do not exists!' }}
-      @endif
-    @endforeach
-  @endif
+  {{--Cart Side Panel--}}
+  <div id="side-panel" class="bg-white">
+    {{-- Cart Side Panel Close Icon --}}
+    <div id="side-panel-trigger-close" class="side-panel-trigger">
+      <a href="#"><i class="icon-line-cross"></i></a>
+    </div>
 
-  @include('frontend.blocks.footer.styles.default')
+    <div class="side-panel-wrap">
+      <div class="top-cart d-flex flex-column h-100">
+        <div class="top-cart-title">
+          <h4>
+            Shopping Cart
+            <small class="bg-color-light icon-stacked text-center rounded-circle color">
+            {{ session('cart') ? count(session('cart')) : 0 }}
+            </small>
+          </h4>
+        </div>
 
-  {{-- Include fixed alert --}}
-  @include('frontend.components.sticky.alert')
-  {{-- Include scripts --}}
-  @include('frontend.panels.scripts')
-  {{-- Scripts custom each page --}}
-  @stack('script')
-  {{-- Include sticky contact --}}
-  @include('frontend.components.sticky.contact')
+        <!-- Cart Items
+      ============================================= -->
+        <div class="top-cart-items">
+          @if (session('cart'))
+            @php $total = 0; @endphp
+            @foreach (session('cart') as $id => $details)
+              @php
+                $total += $details['price'] * $details['quantity'];
+                $alias_detail = Str::slug($details['title']);
+                $url_link = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $alias_detail, $id, 'detail', 'san-pham');
+              @endphp
+              
+              <div class="top-cart-item">
+                <div class="top-cart-item-image border-0">
+                  <a href="{{ $url_link }}"><img src="{{ $details['image_thumb'] ?? $details['image'] }}" alt="Cart Image 1"/></a>
+                </div>
+                <div class="top-cart-item-desc">
+                  <div class="top-cart-item-desc-title">
+                    <a href="{{ $url_link }}" class="fw-medium">{{ $details['title'] }}</a>
+                    <span class="top-cart-item-price d-block">
+                      {{ isset($details['price']) && $details['price'] > 0 ? number_format($details['price']).' đ' : __('Contact') }}
+                    </span>
+                    <div class="d-flex mt-2">
+                      <a href="{{ route('frontend.order.cart') }}" class="fw-normal text-black-50 text-smaller"><u>Edit</u></a>
+                      <a href="javascript:void(0)" class="remove-item fw-normal text-black-50 text-smaller ms-3" data-id="{{ $id }}">
+                        <u>Remove</u>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="top-cart-item-quantity">x {{ $details['quantity'] }}</div>
+                </div>
+              </div>
+            @endforeach
+          @endif
+        </div>
 
-  {{-- Include popup --}}
-  @include('frontend.components.popup.default')
+        <!-- Cart Saved Text
+      ============================================= -->
+        <div class="py-2 px-3 mt-auto text-black-50 text-smaller bg-color-light">
+          <span>
+            <img src="{{ asset('images/check.png') }}" alt="">
+            You save 1.000.000 đ on this order.
+          </span>
+        </div>
 
+        <!-- Cart Price and Button
+      ============================================= -->
+        <div class="top-cart-action flex-column align-items-stretch">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <small class="text-uppercase ls1">Total</small>
+            <h4 class="fw-medium font-body mb-0">
+              {{ session('cart') ? number_format($total).' đ' : 0 }}
+            </h4>
+          </div>
+          <a href="{{ route('frontend.order.cart') }}" class="button btn-block text-center m-0 fw-normal">
+            <i style="position: relative; top: -2px">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#FFF" viewBox="0 0 256 256">
+                <rect width="256" height="256" fill="none"></rect>
+                <path d="M40,192a16,16,0,0,0,16,16H216a8,8,0,0,0,8-8V88a8,8,0,0,0-8-8H56A16,16,0,0,1,40,64Z" opacity="0.2"></path>
+                <path d="M40,64V192a16,16,0,0,0,16,16H216a8,8,0,0,0,8-8V88a8,8,0,0,0-8-8H56A16,16,0,0,1,40,64v0A16,16,0,0,1,56,48H192"
+                  fill="none" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="10">
+                </path>
+                <circle cx="180" cy="144" r="12"></circle>
+              </svg>
+            </i>
+            Checkout
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- Document Wrapper --}}
+  <div id="wrapper" class="clearfix">
+
+    @include('frontend.blocks.header.styles.default')
+  
+    {{-- Foreach and print block content by current page --}}
+    
+    @if (isset($blocks_selected))
+      @foreach ($blocks_selected as $block)
+        @if (\View::exists('frontend.blocks.' . $block->block_code . '.index'))
+          @include('frontend.blocks.' . $block->block_code . '.index')
+        @else
+          {{ 'View: frontend.blocks.' . $block->block_code . '.index do not exists!' }}
+        @endif
+      @endforeach
+    @endif
+  
+    @include('frontend.blocks.footer.styles.default')
+  
+    {{-- Include fixed alert --}}
+    @include('frontend.components.sticky.alert')
+    {{-- Include scripts --}}
+    @include('frontend.panels.scripts')
+    {{-- Scripts custom each page --}}
+    @stack('script')
+    {{-- Include sticky contact --}}
+    @include('frontend.components.sticky.contact')
+  
+    {{-- Include popup --}}
+    @include('frontend.components.popup.default')
+
+  </div>
 
 </body>
 

@@ -33,7 +33,7 @@
         </p>
         <a href="<?php echo e($url_link); ?>"
           class="button button-border m-0 button-dark border-width-1 border-default h-bg-color"
-          ><?php echo e($url_link_title); ?><i class="icon-long-arrow-right"></i>
+          ><?php echo e($url_link_title); ?> <i class="icon-long-arrow-right"></i>
         </a>
       </div>
     </div>

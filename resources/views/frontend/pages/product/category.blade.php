@@ -1,15 +1,21 @@
 @extends('frontend.layouts.default')
 
 @php
+  // dd($taxonomy);
   $page_title = $taxonomy->title ?? ($page->title ?? $page->name);
   $image_background = $taxonomy->json_params->image_background ?? ($web_information->image->background_breadcrumbs ?? '');
-  
+
   $title = $taxonomy->json_params->title->{$locale} ?? ($taxonomy->title ?? null);
   $image = $taxonomy->json_params->image ?? null;
   $seo_title = $taxonomy->json_params->seo_title ?? $title;
   $seo_keyword = $taxonomy->json_params->seo_keyword ?? null;
   $seo_description = $taxonomy->json_params->seo_description ?? null;
   $seo_image = $image ?? null;
+
+  // $childs = $taxonomy->filter(function ($item, $key) use ($taxonomy) {
+  //   return $item->parent_id == $block->id;
+  // });
+  // dd($childs)
 @endphp
 
 @section('content')

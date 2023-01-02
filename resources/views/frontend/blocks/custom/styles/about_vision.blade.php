@@ -31,7 +31,7 @@
         </p>
         <a href="{{ $url_link }}"
           class="button button-border m-0 button-dark border-width-1 border-default h-bg-color"
-          >{{ $url_link_title }}<i class="icon-long-arrow-right"></i>
+          >{{ $url_link_title }} <i class="icon-long-arrow-right"></i>
         </a>
       </div>
     </div>

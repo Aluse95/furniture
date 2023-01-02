@@ -40,6 +40,7 @@
 
         <?php $__currentLoopData = $rows; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <?php
+              $id = $item->id;
               $title = $item->json_params->title->{$locale} ?? $item->title;
               $brief = $item->json_params->brief->{$locale} ?? $item->brief;
               $price = $item->json_params->price ?? $item->price;
@@ -59,9 +60,9 @@
                     <div class="bg-overlay-content align-items-end justify-content-between"
                       data-hover-animate="fadeIn"
                       data-hover-speed="400">
-                      <a href="<?php echo e($alias); ?>" class="btn btn-light me-2"
+                      <div class="add-to-cart btn btn-light me-2" data-id="<?php echo e($id); ?>"
                         ><i class="icon-line-shopping-cart"></i
-                      ></a>
+                      ></div>
                       <a
                         href="demos/furniture/ajax/quick-view.html"
                         class="btn btn-light"

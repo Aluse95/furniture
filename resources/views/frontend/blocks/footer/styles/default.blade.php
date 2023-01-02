@@ -74,4 +74,3 @@
   </div>
   <!-- #copyrights end -->
 </footer>
-</div>

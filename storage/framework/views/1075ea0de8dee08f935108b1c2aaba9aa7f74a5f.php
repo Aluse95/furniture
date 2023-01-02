@@ -74,4 +74,4 @@
   </div>
   <!-- #copyrights end -->
 </footer>
-</div><?php /**PATH C:\xampp\htdocs\furniture\resources\views/frontend/blocks/footer/styles/default.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\furniture\resources\views/frontend/blocks/footer/styles/default.blade.php ENDPATH**/ ?>

@@ -23,7 +23,7 @@
       </h2>
       <a href="<?php echo e($url_link); ?>"
         class="button button-small button-border m-0 button-dark border-width-1 border-default px-4 h-bg-color"
-        ><i class="icon-line-grid"></i> Xem tất cả</a
+        ><i class="icon-line-grid"></i> <?php echo e($url_link_title); ?></a
       >
     </div>
     <div class="row item-categories gutter-20">

@@ -73,7 +73,7 @@
                   target="_blank"
                   style="
                     background: url('<?php echo e($image_child); ?>')
-                      no-repeat center center;
+                    no-repeat center center;
                     background-size: cover;
                     min-height: 33vh;">
                 </a>
@@ -85,9 +85,7 @@
       </div>
 
       <!-- Instagram Right Col - Image -->
-      <div
-        class="col-lg-4 col-md-6 order-lg-3 mt-1 mt-md-0 ps-md-1 ps-lg-0"
-      >
+      <div class="col-lg-4 col-md-6 order-lg-3 mt-1 mt-md-0 ps-md-1 ps-lg-0">
         <div class="row gutter-4">
           <?php if($block_ins2): ?>
             <?php $__currentLoopData = $block_ins2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -107,7 +105,7 @@
                   target="_blank"
                   style="
                     background: url('<?php echo e($image_child); ?>')
-                      no-repeat center center;
+                    no-repeat center center;
                     background-size: cover;
                     min-height: 33vh;">
                 </a>

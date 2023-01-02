@@ -273,7 +273,7 @@ body:not(.primary-menu-open) #primary-menu-trigger svg:nth-child(2) { display: n
 	opacity: 0;
 	content: "";
 	background-color: rgba(0,0,0,0.65);
-	background-image: url('images/instagram.svg');
+	background-image: url('images/instagram.png');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 40px 40px;
