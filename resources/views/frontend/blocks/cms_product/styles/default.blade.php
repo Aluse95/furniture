@@ -57,15 +57,15 @@
                     <div class="bg-overlay-content align-items-end justify-content-between"
                       data-hover-animate="fadeIn"
                       data-hover-speed="400">
-                      <div class="add-to-cart btn btn-light me-2" data-id="{{ $id }}"
-                        ><i class="icon-line-shopping-cart"></i
-                      ></div>
-                      <a
+                      <div class="add-to-cart btn btn-light me-2" data-id="{{ $id }}">
+                        <i class="icon-line-shopping-cart"></i>
+                      </div>
+                      {{-- <a
                         href="demos/furniture/ajax/quick-view.html"
                         class="btn btn-light"
                         data-lightbox="ajax"
                         ><i class="icon-line-expand"></i
-                      ></a>
+                      ></a> --}}
                     </div>
                   </div>
                 </div>

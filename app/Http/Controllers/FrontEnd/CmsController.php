@@ -45,6 +45,7 @@ class CmsController extends Controller
                 }
                 $paramPost['status'] = Consts::POST_STATUS['active'];
                 $paramPost['is_type'] = $taxonomy->taxonomy;
+
                 $this->responseData['posts'] = ContentService::getCmsPost($paramPost)->paginate(Consts::PAGINATE[$taxonomy->taxonomy]);
                 
                 return $this->responseView('frontend.pages.' . $taxonomy->taxonomy . '.category');

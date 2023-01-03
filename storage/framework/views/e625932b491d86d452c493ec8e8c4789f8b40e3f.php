@@ -1,10 +1,9 @@
 
 
 <?php
-  // dd($taxonomy);
+
   $page_title = $taxonomy->title ?? ($page->title ?? $page->name);
   $image_background = $taxonomy->json_params->image_background ?? ($web_information->image->background_breadcrumbs ?? '');
-
   $title = $taxonomy->json_params->title->{$locale} ?? ($taxonomy->title ?? null);
   $image = $taxonomy->json_params->image ?? null;
   $seo_title = $taxonomy->json_params->seo_title ?? $title;
@@ -12,10 +11,6 @@
   $seo_description = $taxonomy->json_params->seo_description ?? null;
   $seo_image = $image ?? null;
 
-  // $childs = $taxonomy->filter(function ($item, $key) use ($taxonomy) {
-  //   return $item->parent_id == $block->id;
-  // });
-  // dd($childs)
 ?>
 
 <?php $__env->startSection('content'); ?>
@@ -24,7 +19,7 @@
     data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
     <div id="particles-line"></div>
     <div class="container clearfix">
-      <h1 class="text-center"><?php echo e($title); ?></h1>
+      <h1 class="text-center"><?php echo e($page_title); ?></h1>
     </div>
   </section>
 
@@ -36,6 +31,7 @@
             <div id="shop" class="shop row grid-container gutter-20" data-layout="fitRows">
               <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <?php
+                  $id = $item->id;
                   $title = $item->json_params->title->{$locale} ?? $item->title;
                   $brief = $item->json_params->brief->{$locale} ?? $item->brief;
                   $price = $item->json_params->price ?? null;
@@ -54,16 +50,16 @@
                   <div class="grid-inner">
                     <div class="product-image">
                       <a href="<?php echo e($alias); ?>">
-                        <img src="<?php echo e($image); ?>" alt="YELLOW DRESS"/>
+                        <img style="height: 380px" src="<?php echo e($image); ?>" alt="YELLOW DRESS"/>
                       </a>
                       
                       <div class="bg-overlay">
                         <div class="bg-overlay-content align-items-end justify-content-between"
                           data-hover-animate="fadeIn"
                           data-hover-speed="400">
-                          <a href="<?php echo e($alias); ?>" class="btn me-2"
-                            ><i class="icon-shopping-cart"></i
-                          ></a>
+                          <div class="add-to-cart btn me-2" data-id="<?php echo e($id); ?>">
+                            <i class="icon-shopping-cart"></i>
+                          </div>
                           <!-- <a
                             href="include/ajax/shop-item.html"
                             class="btn"
@@ -92,46 +88,7 @@
             </div>
           </div>
 
-          
-
-          <div class="sidebar col-lg-3">
-            <div class="sidebar-widgets-wrap">
-              <div class="widget widget-filter-links">
-                <h4>Select Category</h4>
-                <ul
-                  class="custom-filter ps-2"
-                  data-container="#shop"
-                  data-active-class="active-filter"
-                >
-                  <li class="widget-filter-reset active-filter">
-                    <a href="#" data-filter="*">Clear</a>
-                  </li>
-                  <li><a href="#" data-filter=".sf-dress">Dress</a></li>
-                </ul>
-              </div>
-
-              <div class="widget widget-filter-links">
-                <h4>Sort By</h4>
-                <ul class="shop-sorting ps-2">
-                  <li class="widget-filter-reset active-filter">
-                    <a href="#" data-sort-by="original-order">Clear</a>
-                  </li>
-                  <li><a href="#" data-sort-by="name">Name</a></li>
-                  <li>
-                    <a href="#" data-sort-by="price_lh"
-                      >Price: Low to High</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#" data-sort-by="price_hl"
-                      >Price: High to Low</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <!-- .sidebar end -->
+          <?php echo $__env->make('frontend.components.sidebar.product', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         </div>
       </div>
     </div>
@@ -154,10 +111,10 @@
             } else {
               var price = $(itemElem).find(".product-price").text();
             }
+            priceNum = price.split("đ");
+            console.log(priceNum)
 
-            priceNum = price.split("$");
-
-            return parseFloat(priceNum[1]);
+            return parseFloat(priceNum[0]);
           },
           price_hl: function (itemElem) {
             if ($(itemElem).find(".product-price").find("ins").length > 0) {
@@ -166,9 +123,9 @@
               var price = $(itemElem).find(".product-price").text();
             }
 
-            priceNum = price.split("$");
+            priceNum = price.split("đ");
 
-            return parseFloat(priceNum[1]);
+            return parseFloat(priceNum[0]);
           },
         },
         sortAscending: {

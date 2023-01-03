@@ -14,7 +14,7 @@
 <?php $__env->startSection('content'); ?>
   
   <section id="page-title" class="page-title-parallax page-title-center page-title"
-    style="background-image: url('<?php echo e($image_background); ?>'); background-size: cover;"
+    style="background-image: url('<?php echo e(asset('images/background-img.jpg')); ?>'); background-size: cover;"
     data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
     <div id="particles-line"></div>
 
@@ -60,7 +60,7 @@
                 <div class="col-md-6">
                   <article class="entry">
                     <div class="entry-image mb-3">
-                      <a href="<?php echo e($alias); ?>"><img src="<?php echo e($image); ?>" alt="<?php echo e($title); ?>"></a>
+                      <a href="<?php echo e($alias); ?>"><img style="height: 500px" src="<?php echo e($image); ?>" alt="<?php echo e($title); ?>"></a>
                       <div class="bg-overlay">
                         <div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-speed="500">
                           <a href="<?php echo e($alias); ?>" class="overlay-trigger-icon bg-light text-dark"
@@ -95,7 +95,7 @@
             </div>
           </div>
 
-          <?php echo $__env->make('frontend.components.sidebar.post', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+          <?php echo $__env->make('frontend.components.sidebar.product', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         </div>
       </div>

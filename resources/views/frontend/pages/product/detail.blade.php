@@ -53,9 +53,8 @@
               </div>
 
               <div class="col-md-6 product-desc position-lg-sticky h-100">
-                <div
-                  class="d-flex align-items-center justify-content-between"
-                >
+                <h2>{{ $title }}</h2>
+                <div class="d-flex align-items-center justify-content-between">
                   <!-- Product Single - Price
                 ============================================= -->
                   <div class="product-price">
@@ -142,7 +141,7 @@
                   <div class="product">
                     <div class="product-image">
                       <a href="{{ $alias }}">
-                        <img src="{{ $image }}" alt="YELLOW DRESS"/>
+                        <img style="height: 300px" src="{{ $image }}" alt="YELLOW DRESS"/>
                       </a>
                       <div class="bg-overlay">
                         <div

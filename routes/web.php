@@ -34,6 +34,7 @@ Route::namespace('FrontEnd')->group(function () {
   Route::match(array('GET', 'POST'), 'dai-ly', 'ContactController@branch')->name('frontend.branch');
 
   Route::get('lien-he', 'ContactController@index')->name('frontend.contact');
+  Route::get('gioi-thieu', 'ContactController@intro')->name('frontend.page');
   Route::post('contact', 'ContactController@store')->name('frontend.contact.store');
   // Order
   Route::post('order-service', 'OrderController@storeOrderService')->name('frontend.order.store.service');

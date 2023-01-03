@@ -183,23 +183,24 @@ class OrderController extends Controller
                 $order_detail_params['price'] = $details['price'] ?? null;
                 array_push($data, $order_detail_params);
             }
+            // dd($data);
             OrderDetail::insert($data);
 
             $messageResult = $this->web_information->information->notice_order_cart ?? __('Submit order successfull!');
 
-            if (isset($this->web_information->information->email)) {
-                $email = $this->web_information->information->email;
-                Mail::send(
-                    'frontend.emails.order',
-                    [
-                        'order' => $order
-                    ],
-                    function ($message) use ($email) {
-                        $message->to($email);
-                        $message->subject(__('You received a new order from the system'));
-                    }
-                );
-            }
+            // if (isset($this->web_information->information->email)) {
+            //     $email = $this->web_information->information->email;
+            //     Mail::send(
+            //         'frontend.emails.order',
+            //         [
+            //             'order' => $order
+            //         ],
+            //         function ($message) use ($email) {
+            //             $message->to($email);
+            //             $message->subject(__('You received a new order from the system'));
+            //         }
+            //     );
+            // }
             DB::commit();
             session()->forget('cart');
             return redirect()->back()->with('successMessage', $messageResult);

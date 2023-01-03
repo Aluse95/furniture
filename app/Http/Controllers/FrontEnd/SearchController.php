@@ -14,7 +14,7 @@ class SearchController extends Controller
         $params = $request->all();
 
         $params['status'] = Consts::POST_STATUS['active'];
-        $params['is_type'] = Consts::POST_TYPE['post'];
+        $params['is_type'] = Consts::POST_TYPE['product'];
 
         $params['keyword'] = $slug ?? '';
 

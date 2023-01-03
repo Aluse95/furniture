@@ -1,7 +1,8 @@
-@extends('frontend.layouts.page')
+@extends('frontend.layouts.default')
 
 @php
   $page_title = $taxonomy->title ?? ($page->title ?? ($page->name ?? ''));
+  $content = $page->content;
   $image_background = $taxonomy->json_params->image_background ?? ($web_information->image->background_breadcrumbs ?? '');
 @endphp
 @push('style')
@@ -16,12 +17,24 @@
 @endpush
 @section('content')
   {{-- Print all content by [module - route - page] without blocks content at here --}}
-  @if (isset($page->content) && $page->content != '')
-    <div class="section bg-white m-0" id="content-detail">
+  <section id="page-title" class="page-title-parallax page-title-center page-title d-none"
+    style="background-image: url('{{ asset('images/background-img.jpg') }}'); background-size: cover; padding: 120px 0;"
+    data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+    <div id="particles-line"></div>
+
+    <div class="container clearfix mt-4">
+      <h1>{{ $page_title }}</h1>
+    </div>
+  </section>
+
+  <section id="content">
+    <div class="content-wrap">
       <div class="container">
-        {!! $page->content ?? '' !!}
+        <h1 class="text-center">{{ $page_title }}</h1>
+        <p>{!! $content !!}</p>
       </div>
     </div>
-  @endif
+  </section>
+
   {{-- End content --}}
 @endsection

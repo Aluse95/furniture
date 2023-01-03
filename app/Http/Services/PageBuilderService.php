@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Consts;
+use App\Models\CmsTaxonomy;
 use App\Models\BlockContent;
 use App\Models\Component;
 use App\Models\Widget;
@@ -138,4 +139,5 @@ class PageBuilderService
 
         return $query;
     }
+    
 }

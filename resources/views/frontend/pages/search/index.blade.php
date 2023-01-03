@@ -14,7 +14,7 @@
 @section('content')
   {{-- Print all content by [module - route - page] without blocks content at here --}}
   <section id="page-title" class="page-title-parallax page-title-center page-title"
-    style="background-image: url('{{ $image_background }}'); background-size: cover;"
+    style="background-image: url('{{ asset('images/background-img.jpg') }}'); background-size: cover;"
     data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
     <div id="particles-line"></div>
 
@@ -58,7 +58,7 @@
                 <div class="col-md-6">
                   <article class="entry">
                     <div class="entry-image mb-3">
-                      <a href="{{ $alias }}"><img src="{{ $image }}" alt="{{ $title }}"></a>
+                      <a href="{{ $alias }}"><img style="height: 500px" src="{{ $image }}" alt="{{ $title }}"></a>
                       <div class="bg-overlay">
                         <div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-speed="500">
                           <a href="{{ $alias }}" class="overlay-trigger-icon bg-light text-dark"
@@ -90,7 +90,7 @@
             </div>
           </div>
 
-          @include('frontend.components.sidebar.post')
+          @include('frontend.components.sidebar.product')
 
         </div>
       </div>

@@ -46,7 +46,21 @@
       </div>
 
     @endisset
-
+    <div class="widget widget-filter-links">
+      <h4>Lọc sản phẩm</h4>
+      <ul class="shop-sorting ps-2">
+        <li class="widget-filter-reset active-filter">
+          <a href="#" data-sort-by="original-order">Clear</a>
+        </li>
+        <li><a href="#" data-sort-by="name">Tên</a></li>
+        <li>
+          <a href="#"data-sort-by="price_lh">Giá: Thấp đến cao</a>
+        </li>
+        <li>
+          <a href="#" data-sort-by="price_hl">Giá: Cao đến thấp</a>
+        </li>
+      </ul>
+    </div>
     @php
       $params_product['status'] = App\Consts::POST_STATUS['active'];
       $params_product['is_type'] = App\Consts::POST_TYPE['product'];
@@ -70,7 +84,7 @@
               $date = date('H:i d/m/Y', strtotime($item->created_at));
               // Viet ham xu ly lay slug
               $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $item->taxonomy_title, $item->taxonomy_id);
-              $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $title, $item->id, 'detail');
+              $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $item->alias ?? $title, $item->id, 'detail', $item->taxonomy_title);
             @endphp
             <div class="entry col-12">
               <div class="grid-inner row g-0">
@@ -130,7 +144,7 @@
               $date = date('H:i d/m/Y', strtotime($item->created_at));
               // Viet ham xu ly lay slug
               $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $item->taxonomy_title, $item->taxonomy_id);
-              $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $title, $item->id, 'detail');
+              $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $item->alias ?? $title, $item->id, 'detail', $item->taxonomy_title);
             @endphp
             <div class="entry col-12">
               <div class="grid-inner row g-0">
